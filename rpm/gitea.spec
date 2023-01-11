@@ -2,9 +2,6 @@
 %global minor_version 18
 %global micro_version 0
 
-# Default support for sqlite and pam (not provided by upstream by default)
-%global gitea_tags "sqlite sqlite_unlock_notify pam"
-
 %define debug_package %{nil}
 
 Name:		gitea
@@ -94,7 +91,8 @@ for file in $(find . -type f -name "*.css"); do
 done
 
 %build
-export TAGS="%{gitea_tags}"
+# Default support for sqlite and pam (not provided by upstream by default)
+export TAGS="sqlite sqlite_unlock_notify pam"
 export LDFLAGS="-s -w -X \"main.Version=%{version}\" -X \"code.gitea.io/gitea/modules/setting.CustomPath=/etc/gitea\" -X \"code.gitea.io/gitea/modules/setting.AppWorkPath=/var/lib/gitea\""
 
 # Probably not needed, but just in case I guess.
@@ -191,7 +189,7 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_datadir}/%{name}/docs.gitea.io
 
 %changelog
-* Wed Jan 11 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.0-2
+* Wed Jan 11 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.0-3
 - Update to 1.18.0
 
 * Sat Oct 15 2022 Louis Abel <tucklesepk@gmail.com> - 1.17.3-1
