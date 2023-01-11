@@ -89,7 +89,7 @@ This subpackage contains the Gitea documentation from https://docs.gitea.io
 %patch1 -p1
 
 install -m 0644 %{SOURCE4} .
-for file in $(find . -type f - name "*.css"); do
+for file in $(find . -type f -name "*.css"); do
   chmod -x ${file}
 done
 
@@ -191,7 +191,7 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_datadir}/%{name}/docs.gitea.io
 
 %changelog
-* Wed Jan 11 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.0-1
+* Wed Jan 11 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.0-2
 - Update to 1.18.0
 
 * Sat Oct 15 2022 Louis Abel <tucklesepk@gmail.com> - 1.17.3-1
