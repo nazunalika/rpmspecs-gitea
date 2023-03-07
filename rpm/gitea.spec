@@ -6,7 +6,7 @@
 
 Name:		gitea
 Version:	%{major_version}.%{minor_version}.%{micro_version}
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	A painless self-hosted Git service
 License:	MIT
 URL:		https://gitea.io
@@ -32,7 +32,7 @@ BuildRequires:	pam-devel
 Requires:	git
 Requires:	systemd
 Requires: openssh-server
-Requires(pre):	shadow
+Requires(pre):	shadow-utils
 Requires(post):	systemd
 Requires(postun):	systemd
 Requires(preun):	systemd
@@ -189,6 +189,9 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_datadir}/%{name}/docs.gitea.io
 
 %changelog
+* Tue Mar 07 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.5-2
+- Fix requires
+
 * Sun Feb 21 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.5-1
 - Update to 1.18.5
 
