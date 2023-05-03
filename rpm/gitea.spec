@@ -129,7 +129,7 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/gitea \
 cp -r options $RPM_BUILD_ROOT%{_datadir}/gitea/
 cp -r public $RPM_BUILD_ROOT%{_datadir}/gitea/
 cp -r templates $RPM_BUILD_ROOT%{_datadir}/gitea/
-cp -r web_src/less $RPM_BUILD_ROOT%{_datadir}/gitea/public
+#cp -r web_src/less $RPM_BUILD_ROOT%{_datadir}/gitea/public
 install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/docs.gitea.io/
 tar -xvzf %{SOURCE1} -C $RPM_BUILD_ROOT%{_datadir}/%{name}/docs.gitea.io
 
