@@ -18,6 +18,7 @@ Source4:  README.EL+Fedora
 Source5:  gitea.httpd
 Source6:  gitea.nginx
 Source7:  gitea.caddy
+Source8:  gitea.sysusers
 
 Patch1:		0001-gitea.app.ini.patch
 
@@ -106,6 +107,7 @@ install -D -m 644 %{SOURCE3} $RPM_BUILD_ROOT%{_prefix}/lib/firewalld/services/%{
 install -D -m 644 %{SOURCE5} $RPM_BUILD_ROOT%{_sysconfdir}/httpd/conf.d/%{name}.conf
 install -D -m 644 %{SOURCE6} $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d/%{name}.conf
 install -D -m 644 %{SOURCE7} $RPM_BUILD_ROOT%{_sysconfdir}/caddy/Caddyfile.d/%{name}.caddyfile
+install -D -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{_sysusersdir}/%{name}.conf
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/gitea \
   $RPM_BUILD_ROOT%{_localstatedir}/lib/gitea \
   $RPM_BUILD_ROOT%{_localstatedir}/lib/gitea/data \
@@ -140,10 +142,14 @@ EOF
 
 %pre
 # Not official
+%if 0%{?fedora} || 0%{?rhel} >= 9
+%sysusers_create_compat %{SOURCE8}
+%else
 %{_sbindir}/groupadd -r git 2>/dev/null || :
 %{_sbindir}/useradd -r -g git \
   -s /sbin/nologin -d %{_datadir}/%{name} \
   -c 'Gitea' git 2>/dev/null || :
+%endif
 
 %preun
 %systemd_preun %{name}.service
@@ -163,6 +169,7 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_bindir}/gitea
 %{_prefix}/lib/firewalld/services/%{name}.xml
 %{_tmpfilesdir}/%{name}.conf
+%{_sysusersdir}/%{name}.conf
 
 %defattr(0660,root,git,770)
 %dir %{_sysconfdir}/gitea
@@ -189,6 +196,9 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_datadir}/%{name}/docs.gitea.io
 
 %changelog
+* Tue Jul 04 2023 Louis Abel <tucklesepk@gmail.com> - 1.19.4-1
+- Security release
+
 * Wed May 03 2023 Louis Abel <tucklesepk@gmail.com> - 1.19.3-1
 - Release
 
