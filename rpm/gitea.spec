@@ -1,6 +1,6 @@
 %global major_version 1
 %global minor_version 19
-%global micro_version 3
+%global micro_version 4
 
 %define debug_package %{nil}
 
