@@ -1,6 +1,6 @@
 %global major_version 1
-%global minor_version 19
-%global micro_version 4
+%global minor_version 20
+%global micro_version 0
 
 %define debug_package %{nil}
 
@@ -196,85 +196,6 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_datadir}/%{name}/docs.gitea.io
 
 %changelog
-* Tue Jul 04 2023 Louis Abel <tucklesepk@gmail.com> - 1.19.4-1
-- Security release
-
-* Wed May 03 2023 Louis Abel <tucklesepk@gmail.com> - 1.19.3-1
-- Release
-
-* Fri Apr 28 2023 Louis Abel <tucklesepk@gmail.com> - 1.19.2-1
-- Release
-
-* Wed Apr 12 2023 Louis Abel <tucklesepk@gmail.com> - 1.19.1-1
-- Release
-
-* Tue Mar 21 2023 Louis Abel <tucklesepk@gmail.com> - 1.19.0-1
-- Fix requires
-
-* Tue Mar 07 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.5-2
-- Fix requires
-
-* Sun Feb 21 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.5-1
-- Update to 1.18.5
-
-* Sun Feb 19 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.4-1
-- Update to 1.18.4
-
-* Mon Jan 23 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.3-1
-- Update to 1.18.3
-
-* Thu Jan 19 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.2-1
-- Update to 1.18.2
-
-* Tue Jan 17 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.1-1
-- Update to 1.18.0
-
-* Wed Jan 11 2023 Louis Abel <tucklesepk@gmail.com> - 1.18.0-3
-- Update to 1.18.0
-
-* Sat Oct 15 2022 Louis Abel <tucklesepk@gmail.com> - 1.17.3-1
-- Update to 1.17.3 (security, bug fix, and enhancement update)
-
-* Tue Sep 06 2022 Louis Abel <tucklesepk@gmail.com> - 1.17.2-1
-- Update to 1.17.2 (security update)
-
-* Thu Aug 18 2022 Louis Abel <tucklesepk@gmail.com> - 1.17.1-1
-- Update to 1.17.1 (security update)
-
-* Sat Jul 30 2022 Louis Abel <tucklesepk@gmail.com> - 1.17.0-1
-- Update to 1.17.0
-
-* Tue Jul 12 2022 Louis Abel <tucklesepk@gmail.com> - 1.16.9-1
-- Update to 1.16.9
-
-* Mon May 16 2022 Louis Abel <tucklesepk@gmail.com> - 1.16.8-1
-- Update to 1.16.8
-
-* Sun May 01 2022 Louis Abel <tucklesepk@gmail.com> - 1.16.7-1
-- Update to 1.16.7
-
-* Thu Apr 07 2022 Louis Abel <tucklesepk@gmail.com> - 1.16.6-1
-- Update to 1.16.6
-
-* Fri Mar 25 2022 Louis Abel <tucklesepk@gmail.com> - 1.16.5-3
-- Add post uninstall section
-
-* Wed Mar 23 2022 Louis Abel <tucklesepk@gmail.com> - 1.16.5-2
-- Update to 1.16.5
-- Patch minimum go version to 1.16 temporarily for RHEL
-  and Fedora 35
-
-* Mon Mar 14 2022 Louis Abel <tucklesepk@gmail.com> - 1.16.4-1
-- Update to 1.16.4
-
-* Thu Mar 03 2022 Louis Abel <tucklesepk@gmail.com> - 1.16.3-2
-- Update to 1.16.3
-- Add nginx configuration
-- Add caddy configuration
-
-* Thu Feb 24 2022 Louis Abel <tucklesepk@gmail.com> - 1.16.2-1
-- Update to 1.16.2
-
-* Fri Feb 11 2022 Louis Abel <tucklesepk@gmail.com> - 1.16.1-2
-- Initial release of 1.16.1 for Fedora and Enterprise Linux
-- Clean up spec
+* Sun Jul 16 2023 Louis Abel <tucklesepk@gmail.com> - 1.20.0-1
+- Update to 1.20.0
+- Clear change log
