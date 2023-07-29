@@ -21,6 +21,7 @@ Source7:  gitea.caddy
 Source8:  gitea.sysusers
 
 Patch1:		0001-gitea.app.ini.patch
+Patch2:		0001-makefile.patch
 
 BuildRequires:	systemd
 BuildRequires:	go >= 1.17.0
@@ -85,6 +86,7 @@ This subpackage contains the Gitea documentation from https://docs.gitea.io
 %prep
 %setup -q -n %{name}-src-%{version}
 %patch1 -p1
+%patch2 -p1
 
 install -m 0644 %{SOURCE4} .
 for file in $(find . -type f -name "*.css"); do
