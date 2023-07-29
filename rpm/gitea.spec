@@ -1,6 +1,6 @@
 %global major_version 1
 %global minor_version 20
-%global micro_version 1
+%global micro_version 2
 
 %define debug_package %{nil}
 
@@ -196,6 +196,9 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_datadir}/%{name}/docs.gitea.io
 
 %changelog
+* Sat Jul 29 2023 Louis Abel <tucklesepk@gmail.com> - 1.20.2-1
+- Update to 1.20.2
+
 * Sat Jul 22 2023 Louis Abel <tucklesepk@gmail.com> - 1.20.1-1
 - Update to 1.20.1
 
