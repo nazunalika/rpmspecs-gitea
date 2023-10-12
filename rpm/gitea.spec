@@ -26,10 +26,10 @@ Source9:	https://github.com/go-gitea/gitea/releases/download/v%{version}/%{name}
 Patch1:		0001-gitea.app.ini.patch
 
 BuildRequires:	systemd
-BuildRequires:	go >= 1.17.0
+BuildRequires:	golang
 BuildRequires:	git
 BuildRequires:	make
-BuildRequires:	nodejs-devel >= 16.0.0
+BuildRequires:	nodejs-devel
 BuildRequires:	npm
 BuildRequires:	go-srpm-macros
 BuildRequires:	pam-devel
