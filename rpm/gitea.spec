@@ -102,6 +102,7 @@ ls
 
 # Probably not needed, but just in case I guess.
 #TAGS="${TAGS}" LDFLAGS="${LDFLAGS}" make build
+mkdir -p $RPM_BUILD_ROOT%{_bindir}
 cp %{SOURCE9} $RPM_BUILD_ROOT%{_bindir}/gitea
 
 %install
