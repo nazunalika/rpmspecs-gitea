@@ -11,7 +11,7 @@ Summary:	A painless self-hosted Git service
 License:	MIT
 URL:		https://gitea.io
 
-Source0:	https://github.com/go-gitea/gitea/releases/download/v%{version}/%{name}-%{version}-linux-amd64
+Source0:	https://github.com/go-gitea/gitea/releases/download/v%{version}/%{name}-src-%{version}.tar.gz
 Source1:	https://github.com/go-gitea/gitea/releases/download/v%{version}/%{name}-docs-%{version}.tar.gz
 Source2:	gitea.service
 Source3:  gitea.firewalld
@@ -20,6 +20,8 @@ Source5:  gitea.httpd
 Source6:  gitea.nginx
 Source7:  gitea.caddy
 Source8:  gitea.sysusers
+Source9:	https://github.com/go-gitea/gitea/releases/download/v%{version}/%{name}-%{version}-linux-amd64
+
 
 Patch1:		0001-gitea.app.ini.patch
 
@@ -84,6 +86,7 @@ Summary: Documentation for %{name}
 This subpackage contains the Gitea documentation from https://docs.gitea.io
 
 %prep
+%setup -q -n %{name}-src-%{version}
 %patch1 -p1
 
 install -m 0644 %{SOURCE4} .
@@ -99,7 +102,7 @@ ls
 
 # Probably not needed, but just in case I guess.
 #TAGS="${TAGS}" LDFLAGS="${LDFLAGS}" make build
-cp ${SOURCE0} $RPM_BUILD_ROOT%{_bindir}/gitea
+cp ${SOURCE9} $RPM_BUILD_ROOT%{_bindir}/gitea
 
 %install
 install -D -m 755 gitea $RPM_BUILD_ROOT%{_bindir}/gitea
