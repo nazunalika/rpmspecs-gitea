@@ -84,7 +84,6 @@ Summary: Documentation for %{name}
 This subpackage contains the Gitea documentation from https://docs.gitea.io
 
 %prep
-%setup -q -n %{name}-src-%{version}
 %patch1 -p1
 
 install -m 0644 %{SOURCE4} .
