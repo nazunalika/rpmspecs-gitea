@@ -1,8 +1,8 @@
 diff --git a/custom/conf/app.example.ini b/custom/conf/app.example.ini
-index 6f8a50829..2897455b7 100644
+index 665a1d96e..b81692a95 100644
 --- a/custom/conf/app.example.ini
 +++ b/custom/conf/app.example.ini
-@@ -275,10 +275,10 @@ RUN_USER = ; git
+@@ -278,10 +278,10 @@ RUN_USER = ; git
  ;;
  ;; Root directory containing templates and static files.
  ;; default is the path where Gitea is executed
@@ -15,7 +15,7 @@ index 6f8a50829..2897455b7 100644
  ;;
  ;; Enable gzip compression for runtime-generated content, static resources excluded
  ;ENABLE_GZIP = false
-@@ -545,14 +545,14 @@ ENABLE = true
+@@ -556,14 +556,14 @@ ENABLE = true
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; Root path for the log files - defaults to %(GITEA_WORK_DIR)/log
