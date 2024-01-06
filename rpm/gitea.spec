@@ -6,7 +6,7 @@
 
 Name:		gitea
 Version:	%{major_version}.%{minor_version}.%{micro_version}
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	A painless self-hosted Git service
 License:	MIT
 URL:		https://gitea.io
@@ -148,7 +148,7 @@ EOF
 %else
 %{_sbindir}/groupadd -r git 2>/dev/null || :
 %{_sbindir}/useradd -r -g git \
-  -s /sbin/nologin -d %{_datadir}/%{name} \
+  -s /bin/bash -d %{_datadir}/%{name} \
   -c 'Gitea' git 2>/dev/null || :
 %endif
 
@@ -197,6 +197,9 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_datadir}/%{name}/docs.gitea.io
 
 %changelog
+* Sat Jan 06 2024 Louis Abel <tucklesepk@gmail.com> - 1.21.3-2
+- Change git user shell to /bin/bash
+
 * Thu Dec 21 2023 Louis Abel <tucklesepk@gmail.com> - 1.21.3-1
 - Update to 1.21.3
 
