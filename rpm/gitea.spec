@@ -1,12 +1,12 @@
 %global major_version 1
 %global minor_version 21
-%global micro_version 3
+%global micro_version 4
 
 %define debug_package %{nil}
 
 Name:		gitea
 Version:	%{major_version}.%{minor_version}.%{micro_version}
-Release:	2%{?dist}
+Release:	1%{?dist}
 Summary:	A painless self-hosted Git service
 License:	MIT
 URL:		https://gitea.io
@@ -197,6 +197,9 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_datadir}/%{name}/docs.gitea.io
 
 %changelog
+* Tue Jan 16 2024 Louis Abel <tucklesepk@gmail.com> - 1.21.4-1
+- Update to 1.21.4
+
 * Sat Jan 06 2024 Louis Abel <tucklesepk@gmail.com> - 1.21.3-2
 - Change git user shell to /bin/bash
 
