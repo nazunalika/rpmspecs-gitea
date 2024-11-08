@@ -1,6 +1,6 @@
 %global major_version 1
 %global minor_version 22
-%global micro_version 1
+%global micro_version 3
 
 %define debug_package %{nil}
 
@@ -19,6 +19,8 @@ Source5:  gitea.httpd
 Source6:  gitea.nginx
 Source7:  gitea.caddy
 Source8:  gitea.sysusers
+Source9:  gitea.profile.sh
+Source10:  gitea.profile.csh
 
 Patch1:		0001-gitea.app.ini.patch
 #Patch2:		0001-makefile.patch
@@ -85,7 +87,7 @@ This subpackage contains the Gitea documentation from https://docs.gitea.io
 
 %prep
 %setup -q -n %{name}-src-%{version}
-%patch1 -p1
+%patch -P 1
 
 install -m 0644 %{SOURCE4} .
 for file in $(find . -type f -name "*.css"); do
@@ -120,6 +122,7 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/gitea \
   $RPM_BUILD_ROOT%{_localstatedir}/lib/gitea/data/avatars \
   $RPM_BUILD_ROOT%{_localstatedir}/lib/gitea/data/attachments \
   $RPM_BUILD_ROOT%{_localstatedir}/lib/gitea/data/repo-avatars \
+  $RPM_BUILD_ROOT%{_localstatedir}/lib/gitea/https \
   $RPM_BUILD_ROOT%{_localstatedir}/lib/gitea/indexers \
   $RPM_BUILD_ROOT%{_localstatedir}/lib/gitea/indexers/issues.bleve \
   $RPM_BUILD_ROOT%{_localstatedir}/lib/gitea/indexers/issues.queue \
@@ -140,6 +143,9 @@ mkdir -p $RPM_BUILD_ROOT%{_tmpfilesdir}/
 cat > $RPM_BUILD_ROOT%{_tmpfilesdir}/%{name}.conf <<EOF
 d /run/gitea 0755 git git -
 EOF
+
+install -D -m 644 %{SOURCE9} %{buildroot}%{_sysconfdir}/profile.d/gitea.sh
+install -D -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/profile.d/gitea.csh
 
 %pre
 # Not official
@@ -197,8 +203,8 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_datadir}/%{name}/docs.gitea.io
 
 %changelog
-* Thu Nov 07 2024 Louis Abel <tucklesepk@gmail.com> - 1.22.1-1
-- Update to 1.22.1
+* Thu Nov 07 2024 Louis Abel <tucklesepk@gmail.com> - 1.22.3-1
+- Update to 1.22.3
 
 * Fri May 31 2024 Louis Abel <tucklesepk@gmail.com> - 1.22.0-1
 - Update to 1.22.0
