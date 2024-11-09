@@ -177,6 +177,8 @@ systemd-tmpfiles --create %{name}.conf || :
 %{_prefix}/lib/firewalld/services/%{name}.xml
 %{_tmpfilesdir}/%{name}.conf
 %{_sysusersdir}/%{name}.conf
+# setting this as config as users may manipulate it
+%config %{_sysconfdir}/profile.d/gitea.*sh
 
 %defattr(0660,root,git,770)
 %dir %{_sysconfdir}/gitea
