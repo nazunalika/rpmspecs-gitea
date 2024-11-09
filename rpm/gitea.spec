@@ -87,7 +87,7 @@ This subpackage contains the Gitea documentation from https://docs.gitea.io
 
 %prep
 %setup -q -n %{name}-src-%{version}
-%patch -P 1
+%autopatch -p1
 
 install -m 0644 %{SOURCE4} .
 for file in $(find . -type f -name "*.css"); do
