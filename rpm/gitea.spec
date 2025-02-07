@@ -11,7 +11,7 @@ Summary:	A painless self-hosted Git service
 License:	MIT
 URL:		https://gitea.io
 Source0:	https://github.com/go-gitea/gitea/releases/download/v%{version}/%{name}-src-%{version}.tar.gz
-Source1:	https://github.com/go-gitea/gitea/releases/download/v%{version}/%{name}-docs-%{version}.tar.gz
+#Source1:	https://github.com/go-gitea/gitea/releases/download/v%{version}/%{name}-docs-%{version}.tar.gz
 Source2:	gitea.service
 Source3:  gitea.firewalld
 Source4:  README.EL+Fedora
@@ -79,11 +79,11 @@ Requires: caddy >= 2.0.0
 This subpackage contains an caddy configuration file that can be used to reverse
 proxy for Gitea.
 
-%package docs
-Summary: Documentation for %{name}
+#package docs
+#Summary: Documentation for %{name}
 
-%description docs
-This subpackage contains the Gitea documentation from https://docs.gitea.io
+#%description docs
+#This subpackage contains the Gitea documentation from https://docs.gitea.io
 
 %prep
 %setup -q -n %{name}-src-%{version}
@@ -136,8 +136,7 @@ cp -r options $RPM_BUILD_ROOT%{_datadir}/gitea/
 cp -r public $RPM_BUILD_ROOT%{_datadir}/gitea/
 cp -r templates $RPM_BUILD_ROOT%{_datadir}/gitea/
 #cp -r web_src/less $RPM_BUILD_ROOT%{_datadir}/gitea/public
-install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/docs.gitea.io/
-tar -xvzf %{SOURCE1} -C $RPM_BUILD_ROOT%{_datadir}/%{name}/docs.gitea.io
+#install -d $RPM_BUILD_ROOT%{_datadir}/%{name}/docs.gitea.io/
 
 mkdir -p $RPM_BUILD_ROOT%{_tmpfilesdir}/
 cat > $RPM_BUILD_ROOT%{_tmpfilesdir}/%{name}.conf <<EOF
@@ -171,7 +170,7 @@ systemd-tmpfiles --create %{name}.conf || :
 %files
 %doc README.EL+Fedora README.md custom/conf/app.example.ini
 %license LICENSE
-%exclude %{_datadir}/%{name}/docs.gitea.io
+#exclude %{_datadir}/%{name}/docs.gitea.io
 %{_unitdir}/gitea.service
 %{_bindir}/gitea
 %{_prefix}/lib/firewalld/services/%{name}.xml
@@ -201,8 +200,8 @@ systemd-tmpfiles --create %{name}.conf || :
 %files caddy
 %config(noreplace) %{_sysconfdir}/caddy/Caddyfile.d/%{name}.caddyfile
 
-%files docs
-%{_datadir}/%{name}/docs.gitea.io
+#files docs
+#{_datadir}/%{name}/docs.gitea.io
 
 %changelog
 * Wed Feb 05 2025 Louis Abel <tucklesepk@gmail.com> - 1.23.2-1
